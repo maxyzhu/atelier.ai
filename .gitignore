@@ -1,8 +1,3 @@
-rm .gitignore
-```
-
-然后新建一个，推荐用这个 Python 标准模板：
-```
 # Python
 __pycache__/
 *.py[cod]
@@ -14,12 +9,12 @@ __pycache__/
 dist/
 build/
 
-# 虚拟环境
+# environments
 .venv/
 venv/
 env/
 
-# 环境变量
+# env files
 .env
 .env.*
 !.env.example
@@ -28,6 +23,6 @@ env/
 .vscode/
 .idea/
 
-# 系统
+# system files
 .DS_Store
 Thumbs.db
