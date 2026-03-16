@@ -15,11 +15,13 @@ graph LR
         C[Pydantic]
         D[PyYAML]
         E[Socket\nTCP]
+        G[sketchup-mcp\nRuby Plugin]
     end
 
     subgraph Frontend
         F[SketchUp]
-        G[sketchup-mcp\nRuby Plugin]
+        J[Gradio]
+
     end
 
     subgraph Dev Tools
