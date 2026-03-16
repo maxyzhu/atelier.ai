@@ -6,9 +6,36 @@ Atelier is a multi-agent AI system designed to automate architectural workflows 
 
 The system is built around a central GatewayLLM that decomposes incoming requests and dispatches them to software-specific sub-agents (e.g. SketchUp, Rhino). Each agent runs its own agentic loop, executes commands through a software bridge, self-evaluates the result, and retries if needed. A recorder module captures every state change, enabling the system to learn from successful workflows and persist them as reusable tools.
 
+### Tech Stack
+```mermaid
+graph LR
+    subgraph Backend
+        A[Python 3.12]
+        B[Anthropic API\nClaude Sonnet]
+        C[Pydantic]
+        D[PyYAML]
+        E[Socket\nTCP]
+    end
+
+    subgraph Frontend
+        F[SketchUp]
+        G[sketchup-mcp\nRuby Plugin]
+    end
+
+    subgraph Dev Tools
+        H[uv]
+        I[pytest]
+    end
+
+    E --> G
+    G --> F
+    B --> A
+    C --> A
+    D --> A
+```
 
 ### File Structure
-
+```
 atelier/
 │
 ├── contracts/                   # Interface definitions between modules
@@ -66,3 +93,4 @@ atelier/
 ├── pyproject.toml               # uv dependency management
 └── requirements.md              # pydantic, anthropic, pyyaml
 └── README.md                    # Introduction
+```
