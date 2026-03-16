@@ -1,3 +1,0 @@
-pydantic
-anthropic
-pyyaml

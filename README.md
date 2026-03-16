@@ -1,3 +1,9 @@
+# ATELIER.AI
+Architect's AI agents for workflow recording and tool making.
+
+### What is it
+
+
 ### File Structure
 
 atelier/
