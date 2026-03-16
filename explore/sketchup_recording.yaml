@@ -1,0 +1,78 @@
+s0:
+  timestamp: 1234567890
+  model_units: "mm"
+  entities:
+    root:
+      type: "Model"
+      parent: null
+      children: ["group_building"]
+
+    group_building:
+      type: "Group"
+      parent: "root"
+      transform: [1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1]
+      children: ["component_unit_A", "face_001"]
+
+    component_unit_A:
+      type: "Component"
+      parent: "group_building"
+      definition: "unit_type_1"
+      transform: [1,0,0,0, 0,1,0,0, 0,0,1,0, 5000,0,0,1]
+      children: ["face_023"]
+
+    face_001:
+      type: "Face"
+      parent: "group_building"
+      vertices: [[0,0,0], [10000,0,0], [10000,8000,0], [0,8000,0]]
+      normal: [0, 0, 1]
+      material: "concrete_01"
+
+    face_023:
+      type: "Face"
+      parent: "component_unit_A"
+      vertices: [[0,0,0], [500,0,0], [500,400,0], [0,400,0]]
+      normal: [0, 0, 1]
+      material: "concrete_01"
+
+  materials:
+    concrete_01:
+      color: [200, 200, 200]
+      texture: null
+
+linear_flow:
+  - index: 0
+    timestamp: 1234567891
+    operation: "PushPull"
+    context:
+      active_path: ["group_building", "component_unit_A"]
+    input:
+      entity_id: "face_023"
+      entity_type: "Face"
+      position: [0, 0, 0]
+      parameters:
+        direction: [0, 0, 1]
+        distance: 3000
+    output:
+      new_entities: ["face_024", "face_025", "face_026", "face_027"]
+      modified_entities: ["face_023"]
+      deleted_entities: []
+
+  - index: 1
+    timestamp: 1234567895
+    operation: "Move"
+    context:
+      active_path: ["group_building"]
+    input:
+      entity_id: "component_unit_A"
+      entity_type: "Component"
+      position: [5000, 0, 0]
+      parameters:
+        vector: [1000, 0, 0]
+    output:
+      new_entities: []
+      modified_entities: ["component_unit_A"]
+      deleted_entities: []
+
+undo_log:
+  - []          # index 0之前没有undo
+  - []          # index 1之前没有undo
